@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  ::selection {
+    background: #cfe4d5;
+    color: #123524;
+  }
+  :focus-visible {
+    outline: 2px solid #1f7a46;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold transition-colors duration-150 disabled:opacity-60 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-forest-500 text-white hover:bg-forest-600;
+  }
+  .btn-ghost {
+    @apply btn bg-white text-forest-700 border border-forest-100 hover:border-forest-300;
+  }
+  .btn-dark {
+    @apply btn bg-forest-700 text-white hover:bg-forest-800;
+  }
+  .field {
+    @apply flex flex-col gap-1.5 text-sm font-semibold text-forest-800;
+  }
+  .field input,
+  .field select,
+  .field textarea {
+    @apply mt-0.5 rounded-xl border border-forest-100 bg-white px-3.5 py-2.5 text-sm font-normal text-ink outline-none transition focus:border-forest-400 focus:ring-4 focus:ring-forest-100;
+  }
+  .card {
+    @apply rounded-xl2 border border-forest-100/70 bg-white p-5 shadow-card;
+  }
+  .eyebrow {
+    @apply text-[11px] font-bold uppercase tracking-[0.16em] text-forest-500;
+  }
+}
+
+/* Ripeness ring — the signature priority indicator: a small conic-gradient
+   gauge that reads like a freshness dial, filled by urgency. */
+.ripeness-ring {
+  --fill: 0%;
+  --ring-color: #1f7a46;
+  width: 34px;
+  height: 34px;
+  border-radius: 9999px;
+  background: conic-gradient(var(--ring-color) var(--fill), #eef1ec var(--fill));
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.ripeness-ring::after {
+  content: "";
+  width: 24px;
+  height: 24px;
+  border-radius: 9999px;
+  background: white;
+}
